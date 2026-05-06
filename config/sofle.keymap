@@ -70,54 +70,7 @@
 /* END temporary RGB support section */
 
 
-/ {
-    behaviors {
-        bt0_rgb: behavior_bt0_rgb {
-            compatible = "zmk,behavior-macro";
-            label = "BT0_RGB";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0 &rgb_ug RGB_COLOR_HSB(100,100,30)>;
-        };
-        bt1_rgb: behavior_bt1_rgb {
-            compatible = "zmk,behavior-macro";
-            label = "BT1_RGB";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1 &rgb_ug RGB_COLOR_HSB(0,100,30)>;
-        };
-        bt2_rgb: behavior_bt2_rgb {
-            compatible = "zmk,behavior-macro";
-            label = "BT2_RGB";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 2 &rgb_ug RGB_COLOR_HSB(240,100,5)>;
-        };
-        bt3_rgb: behavior_bt3_rgb {
-            compatible = "zmk,behavior-macro";
-            label = "BT3_RGB";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 3 &rgb_ug RGB_COLOR_HSB(120,100,5)>;
-        };
-        bt4_rgb: behavior_bt4_rgb {
-            compatible = "zmk,behavior-macro";
-            label = "BT4_RGB";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 4 &rgb_ug RGB_COLOR_HSB(45,100,5)>;
-        };
-        bt5_rgb: behavior_bt5_rgb {
-            compatible = "zmk,behavior-macro";
-            label = "BT5_RGB";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 5 &rgb_ug RGB_COLOR_HSB(45,30,30)>;
-        };
 
-        ricpc: ricpc {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp R &kp I &kp C >;
-            label = "RICPC";
-        };
-    };
-};
- 
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -150,7 +103,7 @@
 &kp TAB       &kp Q   &kp W     &kp E      &kp R         &kp T                                      &kp Y      &kp U     &kp I      &kp O               &kp P     &kp DEL
 &kp CAPSLOCK  &kp A   &kp S     &kp D      &kp F         &kp G                                      &kp H      &kp J     &kp K      &kp L               &kp SEMI  &kp SQT
 &kp LSHFT     &kp Z   &kp X     &kp C      &kp V         &kp B      &kp C_MUTE    &kp C_PLAY_PAUSE  &kp N      &kp M     &kp COMMA  &kp DOT             &kp FSLH  &kp RSHFT
-                      &kp LGUI  &kp LCTRL  &kp LEFT_ALT  &kp ENTER  &mo 1         &mo 2             &kp SPACE  &kp RALT  &kp RCTRL  &kp K_CONTEXT_MENU
+                      &kp LGUI  &kp LCTRL  &kp LEFT_ALT  &kp ENTER  &mo_lower         &mo_raise             &kp SPACE  &kp RALT  &kp RCTRL  &kp K_CONTEXT_MENU
             >;
 
             sensor-bindings =
@@ -208,7 +161,7 @@
             //                    |         |         |         |         |         | |      |      |      |       |      |
 
             bindings = <
-&bt0_rgb         &bt1_rgb         &bt2_rgb         &bt3_rgb         &bt4_rgb &bt5_rgb                                  &none       &none       &none       &bt BT_CLR           &bootloader
+&bt BT_SEL 0       &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4     &bt BT_SEL                                 &none       &none       &none       &bt BT_CLR           &bootloader
 &ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                            &none       &none       &none       &none         &none  &none
 &none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &out OUT_TOG                               &bl BL_TOG  &bl BL_INC  &bl BL_DEC  &bl BL_CYCLE  &none  &none
 &none              &none            &none            &none            &none            &none            &rgb_ug RGB_TOG    &none  &none       &none       &none       &none         &sys_reset  &none
